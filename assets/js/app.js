@@ -73,4 +73,19 @@ console.log(healthData)
 
     chartGroup.append("g")
         .call(leftAxis);
+
+    // 5. Create Circles
+    var circlesGroup = chartGroup.selectAll("circle")
+    .data(healthData)
+    .enter()
+    .append("circle")
+    .attr("cx", d => xLinearScale(d.healthcare +1.5))
+    .attr("cy", d => yLinearScale(d.poverty +0.3))
+    .attr("r", "12")
+    .attr("fill", "blue")
+    .attr("opacity", .5)
+
+    .on("mouseout", function(data, index) {
+        toolTip.hide(data);
+    });
 })
