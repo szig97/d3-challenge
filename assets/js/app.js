@@ -22,4 +22,13 @@ var chartGroup = svg.append("g")
 
 d3.select("body").append("div").attr("class", "tooltip").style("opacity", 0);
 
-
+// Import Data
+d3.csv("data.csv", function(err, healthData) {
+    if (err) throw err;
+console.log(healthData)
+    // 1. Parse Data as numbers
+    healthData.forEach(function(data) {
+        data.poverty = +data.poverty;
+        data.healthcare = +data.healthcare;
+    });
+})
