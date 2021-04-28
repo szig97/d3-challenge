@@ -108,7 +108,9 @@ console.log(healthData)
             toolTip.hide(data);
         });
         
-    // 9. Create axis labels
+    // 9. Create labels
+
+    // State Abbreviations
     chartGroup.append("text")
     .style("font-size", "12px")
     .selectAll("tspan")
@@ -124,4 +126,18 @@ console.log(healthData)
         .text(function(data) {
             return data.abbr
         });
-})
+
+    // Axis labels
+    chartGroup.append("text")
+        .attr("transform", "rotate(-90)")
+        .attr("y", 0 - margin.left + 50)
+        .attr("x", 0 - (height/2))
+        .attr("dy", "1em")
+        .attr("class", "axisText")
+        .text("Lacks Healthcare(%)")
+
+    chartGroup.append("text")
+        .attr("transform", `translate(${width/2}, ${height + margin.top + 15})`)
+        .attr("class", "axisText")
+        .text("In Poverty (%)");
+});
