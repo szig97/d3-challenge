@@ -88,4 +88,18 @@ console.log(healthData)
     .on("mouseout", function(data, index) {
         toolTip.hide(data);
     });
+
+    // 6. Initialize toolTip
+    var toolTip = d3.tip()
+        .attr("class", "tooltip")
+        .offset([80, -60])
+        .html(function(d) {
+            return (abbr + '%');
+        });
+    // 7. Create tooltip in chart
+    chartGroup.call(toolTip);
+
+    
+
+    
 })
