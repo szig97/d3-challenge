@@ -1,3 +1,4 @@
+  
 var svgWidth = 960;
 var svgHeight = 500;
 
@@ -22,8 +23,7 @@ var chartGroup = svg.append("g")
 
 d3.select("body").append("div").attr("class", "tooltip").style("opacity", 0);
 
-// Import Data
-d3.csv("data.csv", function(err, healthData) {
+d3.csv('data.csv').then(function(healthData, err) {
     if (err) throw err;
 console.log(healthData)
     // 1. Parse Data as numbers
