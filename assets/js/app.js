@@ -35,5 +35,34 @@ console.log(healthData)
     // 2. Create scale functions
     var xLinearScale = d3.scaleLinear().range([0, width]);
     var yLinearScale = d3.scaleLinear().range([height, 0]);
-    
+
+    // 3. Create axis functions
+    var bottomAxis = d3.axisBottom(xLinearScale);
+    var leftAxis = d3.axisLeft(yLinearScale);
+
+    var xMin;
+    var xMax;
+    var yMin;
+    var yMax;
+
+    xMin = d3.min(healthData, function(data) {
+        return data.healthcare;
+    });
+
+    xMax = d3.max(healthData, function(data) {
+        return data.healthcare;
+    });
+
+    yMin = d3.min(healthData, function(data) {
+        return data.poverty;
+    });
+
+    yMax = d3.max(healthData, function(data) {
+        return data.poverty;
+    });
+
+    xLinearScale.domain([xMin, xMax]);
+    yLinearScale.domain([yMin, yMax]);
+    console.log(xMin);
+    console.log(yMax);
 })
