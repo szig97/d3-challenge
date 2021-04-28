@@ -99,7 +99,14 @@ console.log(healthData)
     // 7. Create tooltip in chart
     chartGroup.call(toolTip);
 
-    
+    // 8. Create Event listeners in display and hide tooltip
+    circlesGroup.on("click", function(data) {
+        toolTip.show(data);
+    })
+        // onmouseout event
+        .on("mouseout", function(data, index) {
+            toolTip.hide(data);
+        });
 
     
 })
