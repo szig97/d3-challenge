@@ -65,4 +65,12 @@ console.log(healthData)
     yLinearScale.domain([yMin, yMax]);
     console.log(xMin);
     console.log(yMax);
+
+    // 4. Append Axes to Chart
+    chartGroup.append("g")
+        .attr("transform", `translate(0, ${height})`)
+        .call(bottomAxis);
+
+    chartGroup.append("g")
+        .call(leftAxis);
 })
