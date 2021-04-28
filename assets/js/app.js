@@ -82,7 +82,7 @@ console.log(healthData)
     .attr("cx", d => xLinearScale(d.healthcare +1.5))
     .attr("cy", d => yLinearScale(d.poverty +0.3))
     .attr("r", "12")
-    .attr("fill", "blue")
+    .attr("fill", "gray")
     .attr("opacity", .5)
 
     .on("mouseout", function(data, index) {
