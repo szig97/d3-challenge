@@ -107,6 +107,21 @@ console.log(healthData)
         .on("mouseout", function(data, index) {
             toolTip.hide(data);
         });
-
-    
+        
+    // 9. Create axis labels
+    chartGroup.append("text")
+    .style("font-size", "12px")
+    .selectAll("tspan")
+    .data(healthData)
+    .enter()
+    .append("tspan")
+        .attr("x", function(data) {
+            return xLinearScale(data.healthcare +1.3);
+        })
+        .attr("y", function(data) {
+            return yLinearScale(data.poverty +.1);
+        })
+        .text(function(data) {
+            return data.abbr
+        });
 })
