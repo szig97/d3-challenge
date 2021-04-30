@@ -1,4 +1,3 @@
-  
 var svgWidth = 960;
 var svgHeight = 500;
 
@@ -46,19 +45,19 @@ console.log(healthData)
     var yMax;
 
     xMin = d3.min(healthData, function(data) {
-        return data.healthcare;
+        return data.poverty;
     });
 
     xMax = d3.max(healthData, function(data) {
-        return data.healthcare;
+        return data.poverty;
     });
 
     yMin = d3.min(healthData, function(data) {
-        return data.poverty;
+        return data.healthcare;
     });
 
     yMax = d3.max(healthData, function(data) {
-        return data.poverty;
+        return data.healthcare;
     });
 
     xLinearScale.domain([xMin, xMax]);
@@ -67,6 +66,8 @@ console.log(healthData)
     console.log(yMax);
 
     // 4. Append Axes to Chart
+    var bottomAxis = d3.axisBottom(xLinearScale);
+    var leftAxis = d3.axisLeft(yLinearScale);
     chartGroup.append("g")
         .attr("transform", `translate(0, ${height})`)
         .call(bottomAxis);
@@ -79,36 +80,13 @@ console.log(healthData)
     .data(healthData)
     .enter()
     .append("circle")
-    .attr("cx", d => xLinearScale(d.healthcare +1.5))
-    .attr("cy", d => yLinearScale(d.poverty +0.3))
+    .attr("cx", d => xLinearScale(d.poverty +1.5))
+    .attr("cy", d => yLinearScale(d.healthcare +0.3))
     .attr("r", "12")
     .attr("fill", "gray")
     .attr("opacity", .5)
 
-    .on("mouseout", function(data, index) {
-        toolTip.hide(data);
-    });
-
-    // 6. Initialize toolTip
-    var toolTip = d3.tip()
-        .attr("class", "tooltip")
-        .offset([80, -60])
-        .html(function(d) {
-            return (abbr + '%');
-        });
-    // 7. Create tooltip in chart
-    chartGroup.call(toolTip);
-
-    // 8. Create Event listeners in display and hide tooltip
-    circlesGroup.on("click", function(data) {
-        toolTip.show(data);
-    })
-        // onmouseout event
-        .on("mouseout", function(data, index) {
-            toolTip.hide(data);
-        });
-        
-    // 9. Create labels
+    // 6. Create labels
 
     // State Abbreviations
     chartGroup.append("text")
@@ -118,10 +96,10 @@ console.log(healthData)
     .enter()
     .append("tspan")
         .attr("x", function(data) {
-            return xLinearScale(data.healthcare +1.3);
+            return xLinearScale(data.poverty +1.3);
         })
         .attr("y", function(data) {
-            return yLinearScale(data.poverty +.1);
+            return yLinearScale(data.healthcare +.1);
         })
         .text(function(data) {
             return data.abbr
