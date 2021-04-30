@@ -96,10 +96,10 @@ console.log(healthData)
     .enter()
     .append("tspan")
         .attr("x", function(data) {
-            return xLinearScale(data.poverty +1.3);
+            return xLinearScale(data.poverty +1.375);
         })
         .attr("y", function(data) {
-            return yLinearScale(data.healthcare +.1);
+            return yLinearScale(data.healthcare +0.1);
         })
         .text(function(data) {
             return data.abbr
